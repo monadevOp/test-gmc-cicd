@@ -7,13 +7,13 @@ pipeline {
     stages{
         stage ("cloning") {
             steps{
-                echo "clonage"
+                echo "cloning"
                sh "git clone ${node-repo}"
             }
         }
         stage ("Install dependenciess"){
             steps{
-                echo "installation des dependences"
+                echo "installing dependencies"
                 sh "cd the-example-app.nodejs && npm install "
             }
         }
