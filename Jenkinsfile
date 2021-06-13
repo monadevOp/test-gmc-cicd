@@ -23,6 +23,12 @@ pipeline {
                 sh "cd the-example-app.nodejs && npm start"
             }
         }
+        stage ("Test"){
+            steps{
+                echo "verify"
+                sh "curl http://localhost:3000"
+            }
+        }
 
     }
 }
