@@ -1,25 +1,28 @@
 pipeline {
-  agent {
-    docker { image 'node:latest' }
-  }
-  stages {
-    stage('Install') {
-      steps { sh 'npm install' }
-    }
+    agent any
+    parameters{
+        string (name: 'node-repo', defaultValue : 'https://github.com/contentful/the-example-app.nodejs.git', description: '')
 
-    stage('Test') {
-      parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
-        }
-        stage('Unit tests') {
-            steps { sh 'npm run-script test' }
-        }
-      }
     }
+    stages{
+        stage ("cloning") {
+            steps{
+                echo "clonage"
+               sh "git clone ${node-repo}"
+            }
+        }
+        stage ("Install dependenciess"){
+            steps{
+                echo "installation des dependences"
+                sh "cd the-example-app.nodejs && npm install "
+            }
+        }
+        stage ("Deploy"){
+            steps{
+                echo "start project"
+                sh "cd the-example-app.nodejs && npm start"
+            }
+        }
 
-    stage('Build') {
-      steps { sh 'npm run-script build' }
     }
-  }
 }
