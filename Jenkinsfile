@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        cron('* * * * 1-5')
+    }
     parameters{
         string (name: 'node-repo', defaultValue : 'https://github.com/contentful/the-example-app.nodejs.git', description: '')
 
