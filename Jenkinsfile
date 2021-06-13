@@ -3,15 +3,12 @@ pipeline {
     triggers {
         cron('* * * * 1-5')
     }
-    parameters{
-        string (name: 'node-repo', defaultValue : 'https://github.com/contentful/the-example-app.nodejs.git', description: '')
-
-    }
+    
     stages{
         stage ("cloning") {
             steps{
                 echo "cloning"
-               sh "git clone ${node-repo}"
+               sh "git clone https://github.com/contentful/the-example-app.nodejs.git"
             }
         }
         stage ("Install dependenciess"){
