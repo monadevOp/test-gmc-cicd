@@ -18,13 +18,13 @@ pipeline {
                 sh "rm -rf node_modules"
                 sh "rm -rf package-lock.json"
                 sh "npm i npm@latest -g"
-                sh "cd the-example-app.nodejs && npm install &"
+                sh "cd the-example-app.nodejs && npm install"
             }
         }
         stage ("Deploy"){
             steps{
                 echo "start project"
-                sh "cd the-example-app.nodejs && npm run start:dev"
+                sh "cd the-example-app.nodejs && npm run start:dev &"
             }
         }
         stage ("Test"){
