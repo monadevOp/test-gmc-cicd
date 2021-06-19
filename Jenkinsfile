@@ -15,6 +15,8 @@ pipeline {
         stage ("Install dependenciess"){
             steps{
                 echo "installing dependencies"
+                sh "rm -rf node_modules"
+                sh "rm -rf package-lock.json"
                 sh "npm i npm@latest -g"
                 sh "cd the-example-app.nodejs && npm install &"
             }
