@@ -14,7 +14,8 @@ pipeline {
         stage ("Install dependenciess"){
             steps{
                 echo "installing dependencies"
-                sh "cd the-example-app.nodejs && npm install "
+                sh "npm i npm@latest -g"
+                sh "cd the-example-app.nodejs && npm install"
             }
         }
         stage ("Deploy"){
