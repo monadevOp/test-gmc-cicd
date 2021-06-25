@@ -1,9 +1,6 @@
 pipeline {
     agent any
     tools {nodejs "nodejs"}
-    triggers {
-        cron('* * * * 1-5')
-    }
     
     stages{
         stage ("cloning") {
