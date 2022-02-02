@@ -6,13 +6,14 @@ pipeline {
         stage ("cloning") {
             steps{
                 echo "cloning"
-               sh "git clone https://github.com/contentful/the-example-app.nodejs.git"
+               sh "git  https://github.com/contentful/the-example-app.nodejs.git"
             }
         }
         stage ("Install dependenciess"){
             steps{
                 echo "installing dependencies"
                 sh "npm i npm@latest -g"
+                
                 sh "cd the-example-app.nodejs && npm install"
             }
         }
